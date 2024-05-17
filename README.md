@@ -28,15 +28,46 @@ From the above characteristic table, we can directly write the next state equati
 
 **Procedure**
 
-/* write all the steps invloved */
+1.Initialize the shift register to a known state (e.g., all zeros).
+
+2.Input a bit serially into the shift register.
+
+3.Shift the contents of the register one position to the right (or left).
+
+4.Output the shifted bit from the last stage of the register.
+
+5.Repeat steps 2-4 for each bit you want to input and shift.
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+module Tflipflop( input clk, rst_n, input t,
+output reg q,
+output q_bar
+);
+always@(posedge clk) 
+begin // for synchronous reset
+  //WRITE THE CONDITION OF TOGGLE FLIPFLOP HERE WITH RESET AND 
+  //IMPLEMENT THE T LOGIC BY CONDITIONAL OPERATOR
+if(!rst_n)
+q<=0;
+else 
+begin
+q<=(t?~q:q);
+end
+end
+assign q_bar = ~q;
+endmodule
+
+Developed by : Abishai 212223240002
 
 **RTL LOGIC FOR FLIPFLOPS**
 
+![image](https://github.com/Abishai95141/T-FLIPFLOP-POSEDGE/assets/139335314/7b366494-51eb-4df8-8f2c-8b51135e0b23)
+
 **TIMING DIGRAMS FOR FLIP FLOPS**
 
+![image](https://github.com/Abishai95141/T-FLIPFLOP-POSEDGE/assets/139335314/4100ebe0-0f2b-4cf6-9d69-34d168275708)
+
 **RESULTS**
+
+Thus the program executed successfully.
